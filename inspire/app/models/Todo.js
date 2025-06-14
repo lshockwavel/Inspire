@@ -1,6 +1,6 @@
 
 
-export class Image {
+export class Todo {
     constructor(data) {
         this.id = data.id;
         this.completed = data.completed || false; // Default to false if not provided
@@ -10,17 +10,17 @@ export class Image {
         this.updatedAt = data.updatedAt || new Date().toISOString(); // Default to current date if not provided
     }
 
-    get toDoTemplate() {
+    get todoTemplate() {
         return /*html*/`
-        <div class="todo-item">
-            <input type="checkbox" ${this.completed ? 'checked' : ''} onclick="app.TodoController.toggleCompletion('${this.id}')">
-            <span>${this.description}</span>
-            <button class="btn btn-danger" onclick="app.TodoController.deleteTodo('${this.id}')">Delete</button>
-        </div>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+              <input type="checkbox" ${this.completed ? 'checked' : ''} onclick="app.TodoController.toggleTodo('${this.id}')" class="form-check-input me-2">
+              <span>${this.description}</span>
+              <button class="btn btn-danger btn-sm" onclick="app.TodoController.deleteTodo('${this.id}')">Delete</button>
+        </li>
         `;
     }
 
-    get createToDoTemplate() {
+    get createTodoTemplate() {
         return /*html*/`
         <form onsubmit="app.TodoController.createTodo(event)">
             <div class="form-group">
