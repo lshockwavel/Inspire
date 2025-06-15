@@ -7,6 +7,7 @@ export class WeatherController {
     constructor() {
         console.log('This is the Weather Controller');
 
+        weatherService.loadTemperaturePreference(); // Load temperature preference on initialization
         AppState.on('user', this.getWeather);
         AppState.on('weather', this.drawWeather.bind(this)); // Listen for weather state changes
     }

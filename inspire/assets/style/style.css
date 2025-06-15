@@ -32,3 +32,38 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 1rem;
 }
+
+.glass-todo-item {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+}
+
+.temp-label {
+  color: blue;
+}
+
+/* When toggled */
+#tempSwitch:checked + .temp-label {
+  color: red;
+}
+
+.my-custom-li {
+  border-bottom-left-radius: 1rem !important;
+  border-bottom-right-radius: 1rem !important;
+  border-top-left-radius: 1rem !important;
+  border-top-right-radius: 1rem !important;
+}
+
+
+.description-label {
+    /* To help with the message not to overflow*/
+  max-width: 90%;           /* Prevents overflow */
+  white-space: normal;      /* Allows wrapping */
+  word-break: break-word;   /* Breaks long words */
+  text-align: center;       /* Centers text */
+  display: block;           /* Ensures it fills the container width */
+  margin: 0 auto;           /* Centers the badge horizontally */
+}

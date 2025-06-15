@@ -12,9 +12,9 @@ export class Todo {
 
     get todoTemplate() {
         return /*html*/`
-        <li class="list-group-item d-flex justify-content-between align-items-center">
+        <li class="list-group-item d-flex justify-content-between align-items-center glass-todo-item border-bottom-0 rounded-bottom my-custom-li">
               <input type="checkbox" ${this.completed ? 'checked' : ''} onclick="app.TodoController.toggleTodo('${this.id}')" class="form-check-input me-2">
-              <span>${this.description}</span>
+              <span class="description-label">${this.description}</span>
               <button class="btn btn-danger btn-sm" onclick="app.TodoController.deleteTodo('${this.id}')">Delete</button>
         </li>
         `;

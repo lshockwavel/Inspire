@@ -9,12 +9,12 @@ export class Quote {
     
     get quoteTemplate() {
         return /*html */ `
-            <p class="mt-3 text-light" title="${this.author}" >"${this.quote}"</p>
+            <p class="mt-3 text-light" title="Source: ${this.source}" ><span class = "fw-bold">"${this.quote}"</span> - ${this.author}</p>
         `;
     }
 
     //?? Clean up when done
-    get QuoteTemplateTest() {
+    get quoteTemplateTest() {
         return /*html */ `
             <div class="quote">
                 <p>"${this.quote}"</p>

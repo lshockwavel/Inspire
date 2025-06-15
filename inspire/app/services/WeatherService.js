@@ -22,8 +22,35 @@ class WeatherService {
 
     toggleTemperature() {
         console.log("Toggling temperature display");
-        AppState.weather.isFahrenheit = !AppState.weather.isFahrenheit;
-        console.log("Temperature display toggled:", AppState.weather.isFahrenheit);
+        // AppState.weather.isFahrenheit = !AppState.weather.isFahrenheit;
+        AppState.isFahrenheit = !AppState.isFahrenheit; // Ensure AppState reflects the change
+        // AppState.emit('weather'); // Emit an event to notify listeners of the change
+        // console.log("Temperature display toggled:", AppState.isFahrenheit);
+        this.saveTemperaturePreference(AppState.isFahrenheit); // Save the preference
+    }
+
+    saveTemperaturePreference(isFahrenheit) {
+        console.log("Saving temperature preference:", isFahrenheit);
+        localStorage.setItem('isFahrenheit', isFahrenheit); // Save the preference to localStorage
+        AppState.emit('weather'); // Emit an event to notify listeners of the change
+        console.log("Temperature preference saved:", AppState.isFahrenheit);
+    }
+
+    loadTemperaturePreference() {
+        console.log("Loading temperature preference");
+        const savedPreference = localStorage.getItem('isFahrenheit');
+
+        // If no preference is saved, default to Fahrenheit
+        if (savedPreference == null) {
+            console.log("No saved temperature preference found, defaulting to Fahrenheit");
+            AppState.isFahrenheit = true; // Default to Fahrenheit if no preference is saved
+            this.saveTemperaturePreference(AppState.isFahrenheit); // Save the default preference
+            return;
+        }
+
+        AppState.isFahrenheit = savedPreference.toLowerCase() === 'true'; // REVIEW: Is this the way to convert string to boolean?
+
+        console.log("Temperature preference loaded:", AppState.isFahrenheit);
     }
 }
 
