@@ -38,7 +38,8 @@ class WeatherService {
 
     loadTemperaturePreference() {
         console.log("Loading temperature preference");
-        const savedPreference = localStorage.getItem('isFahrenheit');
+        const savedPreference = JSON.parse(localStorage.getItem('isFahrenheit'));
+        // console.log("Saved temperature preference:", savedPreference);
 
         // If no preference is saved, default to Fahrenheit
         if (savedPreference == null) {
@@ -48,7 +49,7 @@ class WeatherService {
             return;
         }
 
-        AppState.isFahrenheit = savedPreference.toLowerCase() === 'true'; // REVIEW: Is this the way to convert string to boolean?
+        // AppState.isFahrenheit = savedPreference.toLowerCase() === 'true'; // REVIEW: Is this the way to convert string to boolean?
 
         console.log("Temperature preference loaded:", AppState.isFahrenheit);
     }
